@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
             $conn ->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 
-            $parametro = [':lista' => $_GET['lista']];
+            $parametro = ['lista' => $_GET['lista']];
             $stmt = $conn-> prepare("SELECT * FROM item WHERE codigo_lista = :lista");
             $stmt->execute($parametro);
             echo("<br><ul>");
