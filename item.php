@@ -27,7 +27,8 @@
                echo("<li>".$linha["codigo"]." - "
                .$linha["datahora"]." - "
                .$linha["descricao"]." - "
-               .$linha["quantidade"] 
+               .$linha["quantidade"]
+               ."&nbsp;<a href='../apagaitem.php/?codigo=".$linha["codigo"]."'><img src='../lixeira.png'></a>" 
                ."</li>");
            }
            echo("</ul><br>");
