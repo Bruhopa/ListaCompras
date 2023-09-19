@@ -35,7 +35,7 @@
                .$linha["datahora"]." - "
                .$linha["descricao"]." - "
                .$linha["quantidade"]
-               ."&nbsp;&nbsp;<button onclick='apagar(".$linha['codigo'].")')><img src='../lixeira.png' title='Apagar Item'></button>" 
+               ."&nbsp;&nbsp;<button onclick='apagar(".$linha['codigo'].")')><img src='../lixeira.png' weight='2%' height='2%' title='Apagar Item'></button>" 
                ."</li>"); 
            }
            echo("</ul><br>");

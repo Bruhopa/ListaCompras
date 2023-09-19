@@ -41,9 +41,9 @@
                echo("<a href='item.php/?lista=".$linha["codigo"]."'>".$linha["codigo"]);
                echo(" - ".$linha["nome"]."</a>");
                echo("&nbsp;&nbsp;");
-               echo("<button onclick='alterar(".$linha["codigo"].")'><img src='pencil.png'></button>");
+               echo("<button onclick='alterar(".$linha["codigo"].")'><img src='pencil.png' weight='20' height='20'></button>");
                echo("&nbsp;&nbsp;");
-               echo("<button onclick='apagar(".$linha["codigo"].")'><img src='lixeira.png'></button></li>");
+               echo("<button onclick='apagar(".$linha["codigo"].")'><img src='lixeira.png' weight='20' height='20'></button></li>");
            }
            echo("</ul><br>");
            $conn = null;
