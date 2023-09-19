@@ -1,33 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <script language="JavaScript">
+        function incluir() {
+            event.preventDefault();
+            window.location = "./incluirlista.php";
+        }
+    </script>
 </head>
 <body>
-<?php
-        $db_servidor = "localhost";
-        $db_nome = "listacompras";
-        $db_usuario = "root";
-        $db_senha = "";
-
-        try{
-            $conn = new PDO("mysql:host=$db_servidor;dbname=$db_nome",$db_usuario,$db_senha);
-            
-            $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-            echo "Conexão bem sucedida";
-            
-            $stmt = $conn->prepare("SELECT * FROM lista");
-            $stmt->execute();
-            echo "<br><ul>";
-            foreach ($stmt as $linha){
-                echo("<li><a href='item.php/?lista=".$linha["codigo"]."'>".$linha["codigo"]."</a> - ".$linha["nome"]."</li>");
-            }
-            echo "</ul>";
-       }catch(PDOException $e){
-            echo "Erro ao conectar Banco de Dados".$e->getMessage();
-        }
-?>
+    <h1>Lista de Compras</h1>
+    <?php 
+       require_once "conexao.php"; 
+       try {
+           //Realizar Consulta a tabela lista
+           //Prepara o SQL
+           $stmt = $conn->prepare("SELECT * FROM lista");
+           //Executa o SQL
+           $stmt->execute();
+           echo("<br><ul>");
+           //Para Cada linha da Tabela faz
+           foreach ($stmt as $linha) {
+               //apresenta dados das Listas
+               echo("<li>");
+               echo("<a href='item.php/?lista=".$linha["codigo"]."'>".$linha["codigo"]);
+               echo(" - ".$linha["nome"]."</a></li>");
+           }
+           echo("</ul><br>");
+           $conn = null;
+       } catch(PDOException $e) {
+          echo "<pre>";
+          echo "Erro ao executar".$e->getMessage();
+          echo "</pre>";
+       }
+    ?>
+    <br>
+    <button name="bincluir" id="bincluir" type="button" onclick="incluir()">Nova lista</button>
 </body>
 </html>

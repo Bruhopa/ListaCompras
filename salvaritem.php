@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salvar Lista</title>
+    <title>Salvar Items</title>
 </head>
 <body>
     <?php 
@@ -12,8 +12,10 @@
 
     //Executar a Inclusão
     try {
-        $parametro = ['nome' => $_GET['nome']];
-        $stmt = $conn->prepare("INSERT INTO lista (codigo, nome) VALUES (null,:nome)");
+        $parametro = ['descricao' => $_GET['descricao']
+                     ,'quantidade' => $_GET['quantidade']
+                     ,'codigolista' => $_GET['codigolista']];
+        $stmt = $conn->prepare("INSERT INTO item (codigo, datahora, descricao, quantidade, codigo_lista) VALUES (null,current_timestamp(),:descricao,:quantidade,:codigolista)");
         if ($stmt->execute($parametro)) {
             echo "Inclusão bem sucedida !";
         };
